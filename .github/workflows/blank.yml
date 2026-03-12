@@ -18,5 +18,5 @@ jobs:
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: CompiledProgram
-        path: usermode/x64/Release/  # Adjust this path if your output folder is different
+        name: cormem_test_executable
+        path: usermode/bin/Release/cormem_test.exe

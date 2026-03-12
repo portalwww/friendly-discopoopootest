@@ -1,0 +1,19 @@
+name: MSBuild
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v2
+
+    - name: Restore NuGet packages
+      run: nuget restore cormem_test.sln
+
+    - name: Build solution
+      run: msbuild cormem_test.sln /p:Configuration=Release /p:Platform=x64

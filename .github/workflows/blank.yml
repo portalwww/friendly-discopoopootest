@@ -16,4 +16,4 @@ jobs:
       run: nuget restore cormem_test.sln
 
     - name: Build solution
-      run: msbuild cormem_test.sln /p:Configuration=Release /p:Platform=x64
+      run: msbuild common_test.sln /p:Configuration=Release /p:Platform=x64

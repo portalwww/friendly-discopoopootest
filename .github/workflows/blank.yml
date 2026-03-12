@@ -1,13 +1,19 @@
+name: MSBuild
+
+on: [push, pull_request]
+
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
+
     steps:
     - uses: actions/checkout@v4
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
+
+    - name: Add MSBuild to PATH
+      uses: microsoft/setup-msbuild@v2
+
+    - name: Restore NuGet packages
+      run: nuget restore cormem_test.sln
+
+    - name: Build solution
+      run: msbuild cormem_test.sln /p:Configuration=Release /p:Platform=x64

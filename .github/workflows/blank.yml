@@ -13,9 +13,7 @@ jobs:
       uses: microsoft/setup-msbuild@v2
 
     - name: Restore NuGet packages
-      # Point this to the subfolder
-      [cite_start]run: nuget restore usermode/cormem_test.sln [cite: 1]
+      run: nuget restore usermode/cormem_test.sln
 
     - name: Build solution
-      # Ensure the path starts with the folder name
-      [cite_start]run: msbuild usermode/cormem_test.sln /p:Configuration=Release /p:Platform=x64 [cite: 1]
+      run: msbuild usermode/cormem_test.sln /p:Configuration=Release /p:Platform=x64

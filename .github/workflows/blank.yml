@@ -1,20 +1,13 @@
-name: Build Solution
-
-on: [push]
-
 jobs:
   build:
-    runs-on: windows-latest # or ubuntu-latest if using dotnet core and compatible libraries
-
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: '8.0.x' # Specify your required version
-
+        dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore your-solution-name.sln
-
-    - name: Build the project
-      run: dotnet build your-solution-name.sln --no-restore --configuration Release
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore

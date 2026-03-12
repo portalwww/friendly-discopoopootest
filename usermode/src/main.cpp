@@ -40,7 +40,7 @@ static int Cleanup(int code)
 
 int main(int argc, char* argv[])
 {
-    const char* targetName = (argc > 1) ? argv[1] : "explorer.exe";
+    const char* targetName = (argc > 1) ? argv[1] : "Strayed.exe";
 
     cout << endl;
     cout << rang::style::bold << rang::fg::cyan << "  CorMem Driver Test" << rang::style::reset << rang::fg::reset << endl;

@@ -12,8 +12,11 @@ jobs:
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v2
 
-    - name: Restore NuGet packages
-      run: nuget restore usermode/cormem_test.sln
-
     - name: Build solution
       run: msbuild usermode/cormem_test.sln /p:Configuration=Release /p:Platform=x64
+
+    - name: Upload Build Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: CompiledProgram
+        path: ida  # Adjust this path if your output folder is different
